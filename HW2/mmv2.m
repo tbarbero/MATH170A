@@ -6,8 +6,12 @@ B = rand(n);
 x = rand(n,1);
 Bx = NaN(n,1); 
 ABx = NaN(n,1);
-
-if size(B,2)~=size(x,1);disp('Error');return;end
+% check sizes
+if size(A,1)~=n;disp('A needs n rows');end
+if size(A,2)~=n;disp('A needs n columns');end
+if size(B,1)~=n;disp('B needs n rows');end
+if size(B,2)~=n;disp('B needs n columns');
+if size(x,1)~-n;disp('x needs dimension n');end
 
 % do Bx
 f=0;
@@ -19,8 +23,6 @@ for i=1:n
     end
     Bx(i,1) = tmp;
 end
-
-if size(A,2)~=size(Bx,1);disp('Error');return;end
 
 % do A(Bx)
 

@@ -7,9 +7,12 @@ B = rand(n);
 x = rand(n,1);
 AB = NaN(n,n);
 ABx = NaN(n,1);
-
 % check sizes
-if size(A,2)~=size(B,1);disp('Error');return;end
+if size(A,1)~=n;disp('A needs n rows');end
+if size(A,2)~=n;disp('A needs n columns');end
+if size(B,1)~=n;disp('B needs n rows');end
+if size(B,2)~=n;disp('B needs n columns');
+if size(x,1)~-n;disp('x needs dimension n');end
 
 f=0;
 for i=1:n % each row of A
@@ -22,10 +25,6 @@ for i=1:n % each row of A
         AB(i,j) = tmp;
     end
 end
-
-% now do AB*x
-if size(AB,2)~=size(x,1);disp('Error');return;end
-
 
 for i=1:n % for each row of A
     tmp=0;
