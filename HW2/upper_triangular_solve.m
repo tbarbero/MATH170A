@@ -6,14 +6,14 @@ function x = upper_triangular_solve(u,b)
 
 % define variables
 n = length(b);
-x = zeros(n,1);
-c = b; % so we don't rewrite over b
+x = b; % use x = b; so we can easily subtract each b element and then overwrite x(i)
 
-for i=1:n
+for i=n:-1:1 % # columns, count backward from n (e.g., n=5 [5 4 3 ...])
     for j=i+1:n
-        c(i) = c(i) - u(i,j)*x(j);
+        x(i) = x(i) - u(i,j)*x(j);
     end
-    x(i) = c(i)/u(i,i);
+    if u(i,i)==0;error('matrix is singular');end
+    x(i) = x(i)/u(i,i);
 end
 
 end
